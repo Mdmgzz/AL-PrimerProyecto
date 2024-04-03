@@ -60,6 +60,17 @@ page 65401 "MNB Bonus Card"
                 RunObject = page "Customer Card";
                 RunPageLink = "No." = field("Customer No.");
             }
+            action(BonusEntries)
+            {
+                ApplicationArea = All;
+                Caption = 'Bonus Entries';
+                Image = Entry;
+                RunObject = page "MNB Bonus Entry";
+                RunPageLink = "Document No." = field("No.");
+                ToolTip = 'Open Bonus Entries';
+            }
+
+
         }
     }
 
