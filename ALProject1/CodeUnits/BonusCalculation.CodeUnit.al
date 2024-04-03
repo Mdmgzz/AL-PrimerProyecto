@@ -50,7 +50,6 @@ codeunit 60060 "MNB Bonus Calculation"
         BonusLine.SetRange("Item No.", SalesInvLine."No.");
         if BonusLine.FindFirst() then
             InsertBonusEntry(BonusLine, SalesInvLine);
-
     end;
 
     local procedure InsertBonusEntry(var BonusLine: Record "MNB Bonus Line"; var SalesInvLine: Record "Sales Invoice Line")
