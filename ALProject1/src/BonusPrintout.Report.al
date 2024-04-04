@@ -38,7 +38,10 @@ report 60062 "MNB Bonus Printout"
                 {
                     IncludeCaption = true;
                 }
+
             }
         }
     }
+
 }
+

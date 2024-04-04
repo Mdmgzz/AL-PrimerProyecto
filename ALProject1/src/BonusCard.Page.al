@@ -37,6 +37,17 @@ page 65401 "MNB Bonus Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies bonus status';
                 }
+                field("Last Released Date"; Rec."Last Released Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies bonus last released date';
+                }
+                field("Customer Name"; Rec."Customer Name")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies bonus customer name';
+                    DrillDown = false;
+                }
             }
             part(Lines; "MNB Bonus Subform")
             {
@@ -46,6 +57,12 @@ page 65401 "MNB Bonus Card"
             }
         }
     }
+    // los action son los botones que aparecen en la parte superior de la pagina
+    // los actions se pueden agrupar en areas para tener una mejor organizacion
+    // cada action tiene un caption que es el texto que aparece en el boton
+    // cada action tiene un tooltip que es el texto que aparece al pasar el mouse sobre el boton
+    // cada action tiene un image que es el icono que aparece en el boton
+    // cada action tiene un runobject que es el objeto que se ejecuta al hacer click en el boton
     actions
     {
         area(Navigation)
@@ -68,10 +85,20 @@ page 65401 "MNB Bonus Card"
                 RunPageLink = "Document No." = field("No.");
                 ToolTip = 'Open Bonus Entries';
             }
-
+        }
+        area(Reporting)
+        {
+            action(Print)
+            {
+                ApplicationArea = All;
+                Caption = 'Print';
+                Image = Print;
+                RunObject = report "MNB Bonus Printout";
+                Tooltip = 'Pints Bonus Card';
+            }
 
         }
+
     }
-
-
 }
+

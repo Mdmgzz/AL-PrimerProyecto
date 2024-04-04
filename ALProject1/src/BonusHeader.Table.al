@@ -21,9 +21,8 @@ table 60055 "MNB Bonus Header"
             trigger OnValidate()
             begin
                 TestStatus();
+                CalcFields("Customer Name")
             end;
-
-
         }
 
 
@@ -56,6 +55,21 @@ table 60055 "MNB Bonus Header"
             DataClassification = CustomerContent;
             Caption = 'Status';
         }
+        field(6; "Last Released Date"; DateTime)
+        {
+            DataClassification = SystemMetadata;
+            Caption = 'Last Released Date';
+            Editable = false;
+        }
+        field(7; "Customer Name"; Text[100])
+        {
+            Caption = 'Customer Name';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Name where("No." = field("Customer No.")));
+            Editable = false;
+
+        }
+
 
     }
     keys
@@ -65,6 +79,8 @@ table 60055 "MNB Bonus Header"
             Clustered = true;
         }
     }
+
+
     trigger OnDelete()
     begin
         TestStatus();
@@ -78,4 +94,13 @@ table 60055 "MNB Bonus Header"
         if Status = Status::Released then
             Error(StatusCannotBeReleasesErr, Status);
     end;
+    //nose porque da error en el datetime 
+    local procedure TestOnRelease()
+    begin
+        if Status <> Status::Released then
+            exit;
+        TestField("Customer No.");
+        "Last Released Date" := CurrentDateTime;
+    end;
 }
+
