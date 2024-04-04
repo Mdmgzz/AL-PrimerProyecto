@@ -16,7 +16,6 @@ page 65401 "MNB Bonus Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies bonus number';
-
                 }
                 field("Customer No."; Rec."Customer No.")
                 {

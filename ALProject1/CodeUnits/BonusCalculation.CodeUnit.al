@@ -17,6 +17,7 @@ codeunit 60060 "MNB Bonus Calculation"
         BonusHeader: Record "MNB Bonus Header";
 
     begin
+
         if SalesInvLine.Type <> SalesInvLine.Type::Item then
             exit;
         BonusHeader.SetRange("Customer No.", SalesInvLine."Bill-to Customer No.");
